@@ -11,7 +11,7 @@ blocks.forEach(block => {
         //     console.log("playerOne isTrue", turnRotation(e))
         turnRotation(e, this.id)
         if (remainingMoves === false) {
-            alert("Tie: Reset Game")
+            alert("Tie: Reset the Board!")
         };
         //   winCheck(xPlayerMoves, winningCombos[0]) // testing specific combo
         //  console.log(player)
@@ -50,6 +50,7 @@ function turnRotation(event, blockId) {
 function winCheck(playerMovesArray, winningCombosArray, playerIndicator) {
     if (winningCombosArray.every(combo => playerMovesArray.includes(combo)) === true) {
         alert(`${playerIndicator} player wins!`);
+        location.reload();
         return true;
     }
     else {
