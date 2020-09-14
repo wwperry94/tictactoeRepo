@@ -5,17 +5,12 @@ let remainingMoves = true;
 let xPlayerMoves = [];
 let oPlayerMoves = [];
 let resetBtn = document.getElementById("reset-btn");
-//console.log(blocks, typeof blocks)
 blocks.forEach(block => {
     block.addEventListener('click', function (e) {
-        //     console.log("playerOne isTrue", turnRotation(e))
         turnRotation(e, this.id)
         if (remainingMoves === false) {
             alert("Tie: Reset the Board!")
         };
-        //   winCheck(xPlayerMoves, winningCombos[0]) // testing specific combo
-        //  console.log(player)
-        //     console.log(`return the div ID: ${this.id}`);
     })
 })
 resetBtn.addEventListener("click", () => {
@@ -25,21 +20,21 @@ resetBtn.addEventListener("click", () => {
 function turnRotation(event, blockId) {
     if (event.target.textContent === "") {
         if (counter % 2) {
-            oPlayerMoves.push(blockId);
             console.log("O's Turn", oPlayerMoves);
             event.target.textContent = "O"
             counter++;
             player = "O";
+            oPlayerMoves.push(blockId);
             winningCombos.forEach(combo => {
                 winCheck(oPlayerMoves, combo, player)
             });
             return true;
         } else {
-            xPlayerMoves.push(blockId);
             console.log("X's Turn", xPlayerMoves);
             event.target.textContent = "X"
             counter++;
             player = "X";
+            xPlayerMoves.push(blockId);
             winningCombos.forEach(combo => {
                 winCheck(xPlayerMoves, combo, player)
             });
